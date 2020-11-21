@@ -16,7 +16,8 @@ public class ItemPickUp : Interactable
     private void PickUp()
     {
         if (Input.GetKeyDown(KeyCode.F))
-        {       
+        {   
+            //Add PickUp Animation
             print("Interacted with " + item.name);
             bool wasPickedUp = Inventory.instance.AddItem(item);
 

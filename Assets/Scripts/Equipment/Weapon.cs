@@ -14,4 +14,4 @@ public class Weapon : Item
         RemoveFromInventory();
     }
 }
-public enum WeaponID{ Axe , Sword , Hammer}
+public enum WeaponID{ Axe , Sword , Hammer, Throwable}

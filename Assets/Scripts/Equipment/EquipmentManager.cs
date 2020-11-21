@@ -15,7 +15,8 @@ public class EquipmentManager : MonoBehaviour
     }
     
     public GameObject axe;
-    public GameObject sword;
+    //public GameObject sword;
+    public GameObject throwable;
     public GameObject hammer;
 
     Weapon[] currentWeapon;
@@ -45,33 +46,48 @@ public class EquipmentManager : MonoBehaviour
 
         currentWeapon[slotIndex] = newWeapon;
 
+        //AXE
         if(newWeapon != null && newWeapon.weapon == WeaponID.Axe)
         {
             Unequip((int)WeaponID.Hammer, newWeapon);
+            Unequip((int)WeaponID.Throwable, newWeapon);
             //Unequip((int)WeaponID.Sword)
             
             characterAnimator.animator.SetBool("IsCombat",true);
 
             axe.SetActive(true);
             hammer.SetActive(false);
+            throwable.SetActive(false);
             //sword.SetActive(false);
         }
         //Add More weapons And Food Manager
-        // if(newWeapon != null && newWeapon.weapon == WeaponID.Sword)
-        // {
-            // axe.SetActive(false);
-            // sword.SetActive(true);
-            // hammer.SetActive(false);
-        // }
+
+        //Hammer
         if(newWeapon != null && newWeapon.weapon == WeaponID.Hammer)
         {
             Unequip((int)WeaponID.Axe, newWeapon);
+            Unequip((int)WeaponID.Throwable, newWeapon);
             // Unequip((int)WeaponID.Sword);
             
             characterAnimator.animator.SetBool("IsCombat",true);
 
             axe.SetActive(false);
             hammer.SetActive(true);
+            throwable.SetActive(false);
+            //sword.SetActive(false);
+        }
+
+        //Throwable
+        if(newWeapon != null && newWeapon.weapon == WeaponID.Throwable)
+        {
+            Unequip((int)WeaponID.Axe, newWeapon);
+            Unequip((int)WeaponID.Hammer, newWeapon);
+            
+            characterAnimator.animator.SetBool("IsCombat",true);
+        
+            axe.SetActive(false);
+            hammer.SetActive(false);
+            throwable.SetActive(true);
             //sword.SetActive(false);
         }
     }
@@ -115,7 +131,8 @@ public class EquipmentManager : MonoBehaviour
 
         characterAnimator.animator.SetBool("IsCombat",false);
         axe.SetActive(false);
-        sword.SetActive(false);
+        //sword.SetActive(false);
         hammer.SetActive(false);
+        throwable.SetActive(false);
     }
 }

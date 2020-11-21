@@ -34,6 +34,13 @@ public class PlayerAnimator : CharacterAnimator
                 currentAttackAnimSet = weaponAnimationDict[newItem];
             }
         }
+        if (newItem != null && newItem.weapon == WeaponID.Throwable)
+        {
+            if(weaponAnimationDict.ContainsKey(newItem))
+            {
+                currentAttackAnimSet = weaponAnimationDict[newItem];
+            }
+        }
         if (newItem == null && oldItem != null)
         {
             currentAttackAnimSet = defaultAttackAnimSet;
