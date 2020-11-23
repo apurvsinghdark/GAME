@@ -21,14 +21,14 @@ public class EquipmentManager : MonoBehaviour
 
     Weapon[] currentWeapon;
     Inventory inventory;
-    CharacterAnimator characterAnimator;
+    PlayerAnimator playerAnimator;
 
     public delegate void OnEquipmentChanged(Weapon newWeapon, Weapon oldWeapon);
     public OnEquipmentChanged onEquipmentChanged;
 
     private void Start() {
         inventory = Inventory.instance;
-        characterAnimator = CharacterAnimator.instance;
+        playerAnimator = FindObjectOfType<PlayerAnimator>();
 
         int numSlots = System.Enum.GetNames(typeof(WeaponID)).Length;
         currentWeapon = new Weapon[numSlots];
@@ -53,7 +53,7 @@ public class EquipmentManager : MonoBehaviour
             Unequip((int)WeaponID.Throwable, newWeapon);
             //Unequip((int)WeaponID.Sword)
             
-            characterAnimator.animator.SetBool("IsCombat",true);
+            playerAnimator.animator.SetBool("IsCombat",true);
 
             axe.SetActive(true);
             hammer.SetActive(false);
@@ -69,7 +69,7 @@ public class EquipmentManager : MonoBehaviour
             Unequip((int)WeaponID.Throwable, newWeapon);
             // Unequip((int)WeaponID.Sword);
             
-            characterAnimator.animator.SetBool("IsCombat",true);
+            playerAnimator.animator.SetBool("IsCombat",true);
 
             axe.SetActive(false);
             hammer.SetActive(true);
@@ -83,7 +83,7 @@ public class EquipmentManager : MonoBehaviour
             Unequip((int)WeaponID.Axe, newWeapon);
             Unequip((int)WeaponID.Hammer, newWeapon);
             
-            characterAnimator.animator.SetBool("IsCombat",true);
+            playerAnimator.animator.SetBool("IsCombat",true);
         
             axe.SetActive(false);
             hammer.SetActive(false);
@@ -129,7 +129,7 @@ public class EquipmentManager : MonoBehaviour
             Unequip(i,null);
         }
 
-        characterAnimator.animator.SetBool("IsCombat",false);
+        playerAnimator.animator.SetBool("IsCombat",false);
         axe.SetActive(false);
         //sword.SetActive(false);
         hammer.SetActive(false);

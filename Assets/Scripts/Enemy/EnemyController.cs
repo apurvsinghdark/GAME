@@ -36,17 +36,17 @@ public class EnemyController : MonoBehaviour
                 if (targetStats != null)
                     //combat.Attack(targetStats);
 
-               Facetarget();
+               transform.LookAt(target);
             }
         }
     }
 
-    void Facetarget()
-    {
-        Vector3 direction = (target.position - transform.position).normalized;
-        Quaternion lookrotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.y));
-        transform.rotation = Quaternion.Slerp(transform.rotation, lookrotation, Time.deltaTime * 5f);
-    }
+    // void Facetarget()
+    // {
+    //     Vector3 direction = (target.position - transform.position).normalized;
+    //     Quaternion lookrotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.y));
+    //     transform.rotation = Quaternion.Slerp(transform.rotation, lookrotation, Time.deltaTime * 5f);
+    // }
 
     private void OnDrawGizmosSelected()
     {

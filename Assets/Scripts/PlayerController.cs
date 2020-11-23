@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
 
     Vector3 y = Vector3.zero;
     CharacterController characterController;
-    CharacterAnimator characterAnimator;
+    PlayerAnimator characterAnimator;
 
     bool isGround;
 
@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
         characterController = gameObject.GetComponent<CharacterController>();
         groundCheck = transform.GetChild(1);
 
-        characterAnimator = CharacterAnimator.instance;
+        characterAnimator = GetComponent<PlayerAnimator>();
     }
 
     private void Update()

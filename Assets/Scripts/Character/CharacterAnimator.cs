@@ -7,18 +7,6 @@ using Random = UnityEngine.Random;
 
 public class CharacterAnimator : MonoBehaviour
 {
-    public static CharacterAnimator instance;
-    private void Awake() {
-        if (instance != null)
-        {
-            DontDestroyOnLoad(instance);
-        }
-        else
-        {
-            instance = this;
-        }
-    }
-
     public AnimationClip replaceableAnimation;
     public AnimationClip[] defaultAttackAnimSet;
     protected AnimationClip[] currentAttackAnimSet;
@@ -29,7 +17,6 @@ public class CharacterAnimator : MonoBehaviour
 
     protected virtual void Start() {
         animator = GetComponentInChildren<Animator>();
-        // if(this.gameObject == )
         combat = GetComponent<CharacterCombat>();
 
         if (overrideController == null)
